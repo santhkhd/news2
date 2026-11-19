@@ -1,0 +1,91 @@
+name: Breaking News Remote Push Notification
+
+on:
+  schedule:
+    # Runs automatically every 6 hours
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+    inputs:
+      country:
+        description: 'Target Country Code (in, us, gb, or default)'
+        required: true
+        default: 'in'
+      title:
+        description: 'Notification Headline Title'
+        required: false
+        default: '🔴 BREAKING: Live News Update'
+      message:
+        description: 'Notification Short Description / Snippet'
+        required: false
+        default: 'Tap to read the latest breaking national report and e-paper updates.'
+      source:
+        description: 'Publisher or Source Name'
+        required: false
+        default: 'News Live'
+      articleUrl:
+        description: 'Web Article Link to open on tap'
+        required: false
+        default: 'https://timesofindia.indiatimes.com'
+      imageUrl:
+        description: 'Photo URL for large banner preview'
+        required: false
+        default: 'https://th-i.thgim.com/public/incoming/w6xa5x/article71670751.ece/alternates/LANDSCAPE_1200/WhatsApp%20Image%202026-11-05%20at%2016.23.50.jpeg'
+
+jobs:
+  update-notification:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Update notifications.json
+        run: |
+          TIMESTAMP=$(date +%s)
+          COUNTRY="${{ github.event.inputs.country || 'in' }}"
+          COUNTRY_LOWER=$(echo "$COUNTRY" | tr '[:upper:]' '[:lower:]')
+          NOTIF_ID="${COUNTRY_LOWER}_${TIMESTAMP}"
+          
+          TITLE="${{ github.event.inputs.title || '🔴 BREAKING: Live News Update' }}"
+          MESSAGE="${{ github.event.inputs.message || 'Tap to read the latest breaking national report and e-paper updates.' }}"
+          SOURCE="${{ github.event.inputs.source || 'News Live' }}"
+          ARTICLE_URL="${{ github.event.inputs.articleUrl || 'https://timesofindia.indiatimes.com' }}"
+          IMAGE_URL="${{ github.event.inputs.imageUrl || 'https://th-i.thgim.com/public/incoming/w6xa5x/article71670751.ece/alternates/LANDSCAPE_1200/WhatsApp%20Image%202026-11-05%20at%2016.23.50.jpeg' }}"
+
+          python3 -c "
+          import json, os
+
+          filepath = 'notifications.json'
+          data = {}
+          if os.path.exists(filepath):
+              with open(filepath, 'r', encoding='utf-8') as f:
+                  try:
+                      data = json.load(f)
+                  except Exception:
+                      data = {}
+
+          data['$COUNTRY_LOWER'] = {
+              'id': '${NOTIF_ID}',
+              'title': '${TITLE}',
+              'message': '${MESSAGE}',
+              'source': '${SOURCE}',
+              'articleUrl': '${ARTICLE_URL}',
+              'imageUrl': '${IMAGE_URL}',
+              'timestamp': ${TIMESTAMP}
+          }
+
+          with open(filepath, 'w', encoding='utf-8') as f:
+              json.dump(data, f, indent=2, ensure_ascii=False)
+          "
+
+          echo "Updated notifications.json for country $COUNTRY_LOWER successfully."
+
+      - name: Commit and Push Notification Update
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add notifications.json
+          git commit -m "Auto-Update remote breaking news notification for ${{ github.event.inputs.country || 'all' }} [skip ci]" || echo "No changes to commit"
+          git push
