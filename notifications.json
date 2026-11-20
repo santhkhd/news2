@@ -1,35 +1,34 @@
 {
   "in": {
-    "id": "in_1795134161",
-    "title": "🔴 BREAKING: Live News Update",
-    "message": "Tap to read the latest breaking national report and e-paper updates.",
-    "source": "News Live",
-    "articleUrl": "https://timesofindia.indiatimes.com",
-    "imageUrl": "https://th-i.thgim.com/public/incoming/w6xa5x/article71670751.ece/alternates/LANDSCAPE_1200/WhatsApp%20Image%202026-11-05%20at%2016.23.50.jpeg",
-    "timestamp": 1795134161
+    "id": "in_20261120_01",
+    "title": "🔴 BREAKING: India National News & Live Briefing",
+    "message": "Key national development reports and morning state briefings are live. Tap to read full report.",
+    "source": "India Live News",
+    "articleUrl": "https://timesofindia.indiatimes.com/india/breaking-news-latest-updates/liveblog/115456789.cms",
+    "imageUrl": "https://th-i.thgim.com/public/incoming/w6xa5x/article71670751.ece/alternates/LANDSCAPE_1200/WhatsApp%20Image%202026-11-05%20at%2016.23.50.jpeg"
   },
   "us": {
-    "id": "us_20261119_01",
+    "id": "us_20261120_01",
     "title": "🔴 BREAKING: US Markets & Tech Surge",
     "message": "Major tech and economic updates from Washington and Wall Street.",
     "source": "US News Live",
-    "articleUrl": "https://www.nytimes.com",
+    "articleUrl": "https://www.wsj.com/news/business",
     "imageUrl": "https://images.wsj.net/im-948924?width=860&size=1.5"
   },
   "gb": {
-    "id": "gb_20261119_01",
+    "id": "gb_20261120_01",
     "title": "🔴 BREAKING: UK Parliament & BBC Headlines",
     "message": "Key national updates from London and across the United Kingdom.",
     "source": "UK News Live",
-    "articleUrl": "https://www.bbc.co.uk/news",
+    "articleUrl": "https://www.bbc.com/news/uk",
     "imageUrl": "https://ichef.bbci.co.uk/news/1024/branded_news/0212/live/60ef2e50-a541-11ef-8f7f-2735d4dbe927.jpg"
   },
   "default": {
-    "id": "global_20261119_01",
+    "id": "global_20261120_01",
     "title": "🔴 BREAKING: Global Breaking News Alert",
     "message": "Top breaking international report and daily e-paper updates.",
     "source": "World News Hub",
-    "articleUrl": "https://news.google.com",
+    "articleUrl": "https://news.google.com/topstories",
     "imageUrl": "https://th-i.thgim.com/public/incoming/w6xa5x/article71670751.ece/alternates/LANDSCAPE_1200/WhatsApp%20Image%202026-11-05%20at%2016.23.50.jpeg"
   }
 }
