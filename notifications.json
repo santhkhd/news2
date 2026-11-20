@@ -1,11 +1,12 @@
 {
   "in": {
-    "id": "in_20261120_01",
-    "title": "🔴 BREAKING: India National News & Live Briefing",
-    "message": "Key national development reports and morning state briefings are live. Tap to read full report.",
-    "source": "India Live News",
-    "articleUrl": "https://timesofindia.indiatimes.com/india/breaking-news-latest-updates/liveblog/115456789.cms",
-    "imageUrl": "https://th-i.thgim.com/public/incoming/w6xa5x/article71670751.ece/alternates/LANDSCAPE_1200/WhatsApp%20Image%202026-11-05%20at%2016.23.50.jpeg"
+    "id": "in_1795186825",
+    "title": "🔴 BREAKING: Live News Update",
+    "message": "Tap to read the latest breaking national report and e-paper updates.",
+    "source": "News Live",
+    "articleUrl": "https://timesofindia.indiatimes.com",
+    "imageUrl": "https://th-i.thgim.com/public/incoming/w6xa5x/article71670751.ece/alternates/LANDSCAPE_1200/WhatsApp%20Image%202026-11-05%20at%2016.23.50.jpeg",
+    "timestamp": 1795186825
   },
   "us": {
     "id": "us_20261120_01",
